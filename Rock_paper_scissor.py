@@ -1,28 +1,29 @@
-#Ask the user to make a choice
-#if the choice is not valid
-#  print an error
-#let the computer to make a choice
-#print choices (emojis)
-#determine the winner
-#ask the user if they want to continue
-#if not
-#  terminate
+import random  # Import the random module for generating computer choices
 
-import random
+# Dictionary to map each choice to its emoji
+emojis = {'r': '🪨', 's': '✂️', 'p': '📃'}
 
-emojis = {'r':'🪨', 's':'✂️','p':'📃'}
-choices = ('r','p','s')
+# Tuple containing valid choices
+choices = ('r', 'p', 's')
 
+# Game loop runs until the user decides to exit
 while True:
-    user_choice = input('Rock, Paper, or Scissors? (r/p/s):').lower()
+    # Ask the user for their choice and convert it to lowercase
+    user_choice = input('Rock, Paper, or Scissors? (r/p/s): ').lower()
+
+    # Validate user input
     if user_choice not in choices:
         print('Invalid Choice!')
-        continue
+        continue  # Ask again if input is invalid
 
+    # Randomly select computer's choice
     computer_choice = random.choice(choices)
+
+    # Display both choices with emojis
     print(f'You Choose {emojis[user_choice]}')
     print(f'Computer Choose {emojis[computer_choice]}')
 
+    # Determine the outcome
     if user_choice == computer_choice:
         print('Tie!')
     elif user_choice == 'r' and computer_choice == 's':
@@ -34,6 +35,7 @@ while True:
     else:
         print('You Lose!')
 
+    # Ask user if they want to play again
     should_continue = input('Continue? (y/n): ').lower()
     if should_continue == 'n':
-        break
+        break  # Exit the game loop
